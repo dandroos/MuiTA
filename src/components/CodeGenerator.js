@@ -138,7 +138,7 @@ export default class CodeGenerator {
         }
         ins(`Typography,`);
         ins(`Button,`);
-        ins(`Link,`);
+        ins(`Container,`);
         ins(`Grid,`);
         ins(`} from "@material-ui/core"`, { tab: -1 });
         ins(`const Hero = () => {`, { doubleLine: true });
