@@ -55,6 +55,9 @@ export default class CodeGenerator {
         ins(`palette: {`, { tab: 1 });
         ins(`primary: { main: '${state.primary}' },`, { tab: 1 });
         ins(`secondary: { main: '${state.secondary}' }`);
+        if (state.mode === "dark") {
+          ins(`type: "dark",`);
+        }
         ins(`},`, { tab: -1 });
         ins(`typography: {`);
         if (state.twoFonts) {
@@ -147,7 +150,7 @@ export default class CodeGenerator {
         ins(`justifyContent="${state.hero.position}"`);
         ins(`position="relative"`);
         ins(`style={{`);
-        ins(`backgroundImage: url("${state.hero.img}"),`, { tab: 1 });
+        ins(`backgroundImage: "url('${state.hero.img}')",`, { tab: 1 });
         ins(`backgroundSize: "cover",`);
         ins(`backgroundPosition: "center",`);
         ins(`}}`, { tab: -1 });
@@ -204,13 +207,10 @@ export default class CodeGenerator {
           ins(`/>`, { tab: -1 });
         }
         ins(`<Typography variant="h2">`);
-        ins(`Welcome to your new theme!`, { tab: 1 });
+        ins(state.hero.text.heading, { tab: 1 });
         ins(`</Typography>`, { tab: -1 });
         ins(`<Typography variant="subtitle1" paragraph>`);
-        ins(
-          `Amet quam quod ducimus earum alias, vero Ipsam expedita excepturi nemo minima soluta quas est eaque Alias nostrum commodi deserunt`,
-          { tab: 1 }
-        );
+        ins(state.hero.text.body, { tab: 1 });
         ins(`</Typography>`, { tab: -1 });
         ins(`<Box mt={2} align="inherit">`);
         ins(`<Grid`, { tab: 1 });
